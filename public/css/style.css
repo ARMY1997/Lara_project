@@ -1,0 +1,64 @@
+*{
+  margin: 0 auto;
+  padding: 0;
+}
+.wrapper{
+  width: 80%;
+}
+.logo{
+  font: bold 25px/31px 'pt_serifbold',arial,helvetica,sans-serif;
+  padding: 40px 53px 40px 40px;
+  margin-right: 50%;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+.logo__circle{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.logo__circle_color_blue{
+  left: 8px;
+  top:56%;
+  background: #00FFCC;
+  border-radius: 50%;
+  opacity: .7;
+}
+.logo__circle_color_dark-blue{
+  background: #0dcaf0;
+  border-radius: 50%;
+  opacity: .7;
+  }
+.header{
+  margin-bottom: 70px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu{
+display: flex;
+}
+.menu_button{
+  margin-right: 15px;
+  background-color: #00FFCC;
+}
+.menu_button:hover{
+  background: #0dcaf0;
+  border-color: #0dcaf0;
+}
+.main{
+  position:relative;
+  background: top left no-repeat url('/images/unnamed.png');
+  padding: 75px 0 40% 0;
+}
+.login_page{
+  padding-left: 50%;
+}
+.footer{
+  background: #000000;
+  text-align: center;
+  color: #FFF;
+}
