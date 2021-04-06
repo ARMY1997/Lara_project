@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Card extends Model
+class Cards extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,6 +13,8 @@ class Card extends Model
         'age',
         'reason_see',
         'assign'
+
+        //'username', 'password', 'enabled', 'role_id', 'updated_at', 'created_at'
     ];
    
         public function user(): BelongsTo

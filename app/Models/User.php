@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function project(): HasMany
     {
-        return $this->hasMany(Card::class);
+        return $this->hasMany(Cards::class);
     }
 }

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Request\StoreRequest;
 use App\Http\Request\UpdateRequest;
-use App\Models\Card;
+use App\Models\Cards;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -19,10 +20,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards = Card::orderBy('create_at','desc')->get();
-        return view('home',[
-            '$cards'=>$cards
-        ]);
+        
+        $users = DB::table('cards')->paginate(15);
+        return view('home',compact('cards'));
     }
 
     /**
@@ -43,7 +43,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        $card=new Card; 
+        $card=new Cards; 
         $card-> name= $request->name;
         $card-> age= $request->age;
         $card-> reason_see= $request->reason_see;
@@ -59,10 +59,10 @@ class CardController extends Controller
   /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Models\Card  $card
+     * @param  \App\Models\Cards  $card
      * @return JsonResponse
      */
-public function show(Card $card):JsonResponse
+public function show(Cards $card):JsonResponse
 {
     return response()->json($card,200);
 }
