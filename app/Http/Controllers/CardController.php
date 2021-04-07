@@ -21,8 +21,7 @@ class CardController extends Controller
     public function index()
     {
         
-        $users = DB::table('cards')->paginate(15);
-        return view('home',compact('cards'));
+
     }
 
     /**
@@ -32,7 +31,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('Cards.create');
+        return view('card.create');
     }
 
     /**
@@ -52,10 +51,9 @@ class CardController extends Controller
         $card-> user_id= $request->user()->id;
         $card->save();
 
-        return redirect()->back()->withSuccess('Пациент успешно добавлен');
+        return redirect()->route('home')->withSuccess('Пациент успешно добавлен');
     }
 
-    
   /**
      * Update the specified resource in storage.
      *
@@ -68,16 +66,26 @@ public function show(Cards $card):JsonResponse
 }
 
 
-
-
+ /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @param  \App\Models\Cards $cards
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Cards $cards)
+    {
+        $card = DB::table('cards');
+        $card = Cards::find(1);
+        return view('card.edit');
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  UpdateRequest  $request
-     * @param Card $card
+     * @param Cards $card
      */
-    public function update(UpdateRequest $request, Card $card):JsonResponse
+    public function update(UpdateRequest $request, Cards $card):JsonResponse
     {
         $card->update($request->validate());
         return response()->json($card,200);
@@ -86,10 +94,10 @@ public function show(Cards $card):JsonResponse
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Card  $request
+     * @param  \App\Models\Cards  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Card $card):JsonResponse
+    public function destroy(Cards $card):JsonResponse
     {
         $card->delete();
         return response()->json([],204);

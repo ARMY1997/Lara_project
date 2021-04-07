@@ -12,23 +12,31 @@
                         </div>
                     @endif
                 </div>
-                <a href="{{ route('Cards.create')}}" class="btn btn-primary">Добавить пациента</a>
-                
-                
+                <a href="{{ route('card.create')}}" class="btn btn-primary">Добавить пациента</a>
+                @if (!empty($cards))
                 @foreach ($cards as $card)
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
-                        Имя: {{$card['id']}}
+                        {{ $card->id}}
+                         </div>
+                        <div class="card-header">
+                           Имя: {{ $card->name}}
                         </div>
                         <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Возраст: {{$card['age']}}</li>
-                        <li class="list-group-item">Причины посещения: {{$card['reason_see']}}</li>
-                        <li class="list-group-item">Назначение: {{$card['assign']}}</li>
+                            <li class="list-group-item">Возраст: {{ $card->age}}</li>
+                            <li class="list-group-item">Причины посещения: {{ $card->reason_see }}</li>
+                            <li class="list-group-item">Назначение:{{ $card->assign}} </li>
                         </ul>
-                        <a href="" class="btn btn-primary">Редактировать</a>
-                        <a href="" class="btn btn-primary">Удалить</a>
+                            <a href="{{ route('card.edit', $card->id)}}" class="btn btn-primary">Редактировать</a>
+                            
+                            <form action="">
+                                <button class="btn btn-primary" type="submit" onclick="return confirm('Вы действительно хотите удалить?')"> Удалить</button>
+                            </form>
                     </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <p>Записей нет</p>
+                @endif
             </div>
         </div>
     </div>

@@ -19,20 +19,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('cards/create', [App\Http\Controllers\CardController::class,'create'])->name('Cards.create');
+Route::get('/cards/create', [App\Http\Controllers\CardController::class,'create'])->name('card.create');
 
-Route::get('/cards', [App\Http\Controllers\CardController::class,'index'])
-->name('cards.index');
+Route::get('/cards', [App\Http\Controllers\CardController::class,'index'])->name('card.index');
 
-Route::post('/cards', [App\Http\Controllers\CardController::class,'store'])->name('cards.store');
+Route::get('/card/{id}', [App\Http\Controllers\HomeController::class,'edit'])->name('card.edit');
 
-Route::get('cards/{card}', [CardController::class,'show'])
-->name('cards.show');
+Route::post('/cards', [App\Http\Controllers\CardController::class,'store'])->name('card.store');
 
-Route::put('cards/{card}', [CardController::class,'update'])
-->name('cards.update');
+Route::get('/cards/{card}', [App\Http\Controllers\CardController::class,'show'])->name('card.show');
 
-Route::delete('cards/{card}', [CardController::class,'destroy'])
-->name('cards.destroy');
+Route::get('cards/create', [App\Http\Controllers\HomeController::class,'create'])->name('card.create');
+
+Route::put('/cards/{card}', [App\Http\Controllers\CardController::class,'update'])->name('card.update');
+
+Route::post('/cards', [App\Http\Controllers\HomeController::class,'update'])->name('update');
+
+Route::delete('/cards/{card}', [App\Http\Controllers\CardController::class,'destroy'])->name('card.destroy');
+
+Route::delete('cards/{card}', [App\Http\Controllers\HomeController::class,'destroy'])->name('card.destroy');
+
+//Route::resource('/card', [HomeController::class]);
