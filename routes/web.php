@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,20 +27,24 @@ Route::get('/cards/create', [App\Http\Controllers\CardController::class,'create'
 
 Route::get('/cards', [App\Http\Controllers\CardController::class,'index'])->name('card.index');
 
-Route::get('/card/{id}', [App\Http\Controllers\HomeController::class,'edit'])->name('card.edit');
+Route::get('/cards/{id}', [App\Http\Controllers\HomeController::class,'edit'])->name('home.edit');
 
-Route::post('/cards', [App\Http\Controllers\CardController::class,'store'])->name('card.store');
+//Route::post('/cards', [App\Http\Controllers\CardController::class,'store'])->name('card.store');
+
+Route::post('/card', [App\Http\Controllers\HomeController::class,'store'])->name('home.store');;
 
 Route::get('/cards/{card}', [App\Http\Controllers\CardController::class,'show'])->name('card.show');
 
-Route::get('cards/create', [App\Http\Controllers\HomeController::class,'create'])->name('card.create');
+Route::get('cards/create', [App\Http\Controllers\HomeController::class,'create'])->name('home.create');
 
-Route::put('/cards/{card}', [App\Http\Controllers\CardController::class,'update'])->name('card.update');
+//Route::put('/cards/{card}', [App\Http\Controllers\CardController::class,'update'])->name('card.update');
 
-Route::post('/cards', [App\Http\Controllers\HomeController::class,'update'])->name('update');
+Route::put('/cards', [App\Http\Controllers\HomeController::class,'update'])->name('home.update');
 
 Route::delete('/cards/{card}', [App\Http\Controllers\CardController::class,'destroy'])->name('card.destroy');
 
-Route::delete('cards/{card}', [App\Http\Controllers\HomeController::class,'destroy'])->name('card.destroy');
+Route::delete('cards/{card}', [App\Http\Controllers\HomeController::class,'destroy'])->name('home.destroy');
 
-//Route::resource('/card', [HomeController::class]);
+//Route::resource('/cards', [HomeController::class]);
+
+//Route::resource('/cards', [CardController::class]);

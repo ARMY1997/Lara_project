@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Card;
+use App\Models\Cards;
 use Database\Factories\CardFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +16,6 @@ class CardSeeder extends Seeder
      */
     public function run()
     {
-       Card::factory(10)->create();
+       Cards::factory(5)->create();
     }
 }

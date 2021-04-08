@@ -15,12 +15,11 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unsigned();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('age');
             $table->string('reason_see');
             $table->string('assign');
-            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -34,6 +33,25 @@ class HomeController extends Controller
         return view('card.create');
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $card=new Cards(); 
+        $card->name= $request->name;
+        $card->age= $request->age;
+        $card->reason_see= $request->reason_see;
+        $card->assign = $request->assign;
+        $card-> user_id= $request->user()->id;
+        $card->save();
+
+        return redirect()->back()->withSuccess('Пациент успешно добавлен');
+    }
      
      function edit($id)
     {
@@ -69,4 +87,15 @@ class HomeController extends Controller
         return redirect('home');
     }
 
+      /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Cards  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Cards $card)
+    {
+        $card->delete();
+        return redirect()->back()->withSuccess('Пациент успешно удален');
+    }
 }

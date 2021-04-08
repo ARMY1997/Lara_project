@@ -13,7 +13,7 @@ class CardFactory extends Factory
      *
      * @var string
      */
-    protected $model = Card::class;
+    protected $model = Cards::class;
 
     /**
      * Define the model's default state.

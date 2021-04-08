@@ -12,7 +12,7 @@
                         </div>
                     @endif
                 </div>
-                <a href="{{ route('card.create')}}" class="btn btn-primary">Добавить пациента</a>
+                <a href="{{ route('home.create')}}" class="btn btn-primary">Добавить пациента</a>
                 @if (!empty($cards))
                 @foreach ($cards as $card)
                     <div class="card" style="width: 18rem;">
@@ -27,10 +27,12 @@
                             <li class="list-group-item">Причины посещения: {{ $card->reason_see }}</li>
                             <li class="list-group-item">Назначение:{{ $card->assign}} </li>
                         </ul>
-                            <a href="{{ route('card.edit', $card->id)}}" class="btn btn-primary">Редактировать</a>
+                            <a href="{{ route('home.edit', $card->id)}}" class="btn btn-info btn-sm">Редактировать</a>
                             
-                            <form action="">
-                                <button class="btn btn-primary" type="submit" onclick="return confirm('Вы действительно хотите удалить?')"> Удалить</button>
+                            <form action="{{ route('home.destroy', $card->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm delete-btn" type="submit" onclick="return confirm('Вы действительно хотите удалить?')"> Удалить</button>
                             </form>
                     </div>
                     @endforeach

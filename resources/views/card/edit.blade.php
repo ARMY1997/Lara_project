@@ -75,10 +75,11 @@
         </nav>
 
         <main class="py-4">
-            <h1>{{$title}} {{$card->name}}</h1>
+            <h1>{{$title}} {{$card->name}} </h1>
             <div class="container">
-                <form action="{{ route('update')}}" method="POST">
+                <form action="{{ route('home.update')}}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div>
                         <legend for="nameField">Имя животного:</legend>
                         <input type="text"  value="{{$card->name}}" class="form-control" name="name" id="formGroupExampleInput" placeholder="Имя животного">

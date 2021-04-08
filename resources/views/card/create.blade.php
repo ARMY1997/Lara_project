@@ -84,7 +84,7 @@
                 @endif
 
             <div class="container">
-                <form action="{{ route('card.store')}}" method="POST">
+                <form action="{{route('home.store')}}" method="POST">
                     @csrf
                     <div>
                         <legend for="nameField">Имя животного:</legend>
