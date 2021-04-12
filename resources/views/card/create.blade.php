@@ -102,10 +102,6 @@
                             <legend for="commentField">Назначение:</legend>
                             <textarea type="text" name="assign" class="form-control" id="formGroupExampleInput" placeholder="Назначение"></textarea>
                           </div>
-                          <div>
-                            <legend for="commentField">Назначение:</legend>
-                            <input type="text" name="user_id" class="form-control" id="formGroupExampleInput" placeholder="Назначение"/>
-                          </div>
                       <div class="col-xs-6 grid-end">
                         <button class="btn btn-primary" type="submit">Добавить</button>
                       </div>

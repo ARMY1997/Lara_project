@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cards;
+use Illuminate\View\View;
+//use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -24,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cards = DB::table('cards')->paginate(5);
+        $cards = DB::table('cards')->where('user_id', auth()->user()->getAuthIdentifier())->paginate(5);
         return view('home',compact('cards'));
     }
 
@@ -52,20 +55,41 @@ class HomeController extends Controller
 
         return redirect()->back()->withSuccess('Пациент успешно добавлен');
     }
-     
-     function edit($id)
+
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Models\Cards  $cards
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Cards $cards)
     {
-        $card = DB::table('cards')
-        ->where('id',$id)
-        ->first();
-        $data=[
-            'card'=>$card,
-            'title'=>'Редактировать'
-        ];
-        return view('card.edit',$data);
+        $this->authorize('view',$cards);
+        $cards->load('user');
+
+        return view('home.show',compact('cards'));
     }
      
-    function update(Request $request)
+    function edit($id)
+    {
+        $idInCard = DB::table('cards')
+            ->where('id',$id)
+            ->first();
+        if(!empty($idInCard) && $idInCard->user_id == auth()->user()->getAuthIdentifier()) {
+            $card = DB::table('cards')
+                ->where('id', $id)
+                ->first();
+            $data = [
+                'card' => $card,
+                'title' => 'Редактировать'
+            ];
+            return view('card.edit', $data);
+        }
+        else return redirect('home')->withErrors('Вам это действие не разрешено!');
+    }
+     
+    function update(Request $request, Cards $cards)
     {
         $request->validate([
             'name'=>'required',
