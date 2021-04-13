@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cards;
 use Illuminate\View\View;
@@ -53,14 +54,14 @@ class HomeController extends Controller
         $card-> user_id= $request->user()->id;
         $card->save();
 
-        return redirect()->back()->withSuccess('Пациент успешно добавлен');
+        return redirect('home')->withSuccess('Пациент успешно добавлен');
     }
 
 
      /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Models\Cards  $cards
+     * @param  id int
      * @return \Illuminate\Http\Response
      */
     public function show(Cards $cards)
@@ -71,6 +72,8 @@ class HomeController extends Controller
         return view('home.show',compact('cards'));
     }
      
+
+   
     function edit($id)
     {
         $idInCard = DB::table('cards')
@@ -84,9 +87,12 @@ class HomeController extends Controller
                 'card' => $card,
                 'title' => 'Редактировать'
             ];
+            $error = [
+                'error' => 'Вам это действие не разрешено'
+            ];
             return view('card.edit', $data);
         }
-        else return redirect('home')->withErrors('Вам это действие не разрешено!');
+        else return redirect('home')->withErrors('message','Вам это действие не разрешено!');
     }
      
     function update(Request $request, Cards $cards)

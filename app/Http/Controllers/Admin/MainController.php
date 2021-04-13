@@ -38,9 +38,16 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function read($id)
     {
-        //
+        if(!empty($id)) {
+            $cards = DB::table('cards')
+                ->where('user_id', $id)->paginate(5);
+            $data=[
+                'cards'=>$cards,
+            ];
+            return view('admin.user_cards', $data);
+        }
     }
     function edit($id)
     {

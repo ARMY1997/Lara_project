@@ -75,36 +75,38 @@
         </nav>
 
         <main class="py-4">
-           <h1>Добавить пациента</h1>
-            @if(session('success'))
-                <div class="alert alert-success" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    <h4><i class="icon fa fa-check"></i>{{ session('success') }}</h4>
-                </div>
-                @endif
-
             <div class="container">
                 <form action="{{route('home.store')}}" method="POST">
                     @csrf
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h1>Добавить пациента</h1>
+                        </div>
+                        <form>
+                          <div class="card-body">
+                            <div class="form-group">
+                              <legend for="nameField">Имя животного:</legend>
+                              <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="Имя животного">
+                            </div>
+                            <div class="form-group">
+                                <legend for="nameField">Возраст:</legend>
+                                <input  type="text" type="text" name="age" class="form-control" id="formGroupExampleInput" placeholder="Возраст">
+                            </div>
+                            <div class="form-group">
+                                <legend for="ageRangeField">Причина посещения:</legend>
+                                <input type="text" type="text" name="reason_see" class="form-control" id="formGroupExampleInput" placeholder="Причина посещения">
+                              </div>
+                              <div class="form-group">
+                                <legend for="commentField">Назначение:</legend>
+                                <textarea type="text" name="assign" class="form-control" id="formGroupExampleInput" placeholder="Назначение"></textarea>
+                              </div>
+                          </div>
+                          <div class="card-footer">
+                            <button class="btn btn-primary" type="submit">Добавить</button>
+                          </div>
+                        </form>
+                      </div>
                     <div>
-                        <legend for="nameField">Имя животного:</legend>
-                        <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="Имя животного">
-                      </div>
-                      <div>
-                        <legend for="nameField">Возраст:</legend>
-                        <input  type="text" type="text" name="age" class="form-control" id="formGroupExampleInput" placeholder="Возраст">  
-                      </div>
-                          <div>
-                            <legend for="ageRangeField">Причина посещения:</legend>
-                            <input type="text" type="text" name="reason_see" class="form-control" id="formGroupExampleInput" placeholder="Причина посещения">
-                          </div>
-                          <div>
-                            <legend for="commentField">Назначение:</legend>
-                            <textarea type="text" name="assign" class="form-control" id="formGroupExampleInput" placeholder="Назначение"></textarea>
-                          </div>
-                      <div class="col-xs-6 grid-end">
-                        <button class="btn btn-primary" type="submit">Добавить</button>
-                      </div>
                 </form>
             </div>
         </main>

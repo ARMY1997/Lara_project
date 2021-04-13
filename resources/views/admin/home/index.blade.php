@@ -68,7 +68,7 @@
                         {{ $user->email }}
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
+                        <a class="btn btn-primary btn-sm" href="{{ route('main.read',$user->id)}}">
                             <i class="fas fa-folder">
                             </i>
                         </a>
@@ -79,7 +79,7 @@
                         <form action="{{ route('main.destroy', $user->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm delete-btn" type="submit" onclick="return confirm('Вы действительно хотите удалить?')"> <i class="fas fa-trash">
+                            <button class="btn btn-danger btn-sm delete-btn" type="submit"> <i class="fas fa-trash">
                             </i></button>
                         </form>
                     </td>
@@ -87,10 +87,11 @@
             </tbody>
             @endforeach
             @else
-                <p>Записей нет</p>
+                <p>Пользователей нет</p>
             @endif
         </table>
       </div>
     </div>
+    {{$users->links()}}
   </section>
 @endsection

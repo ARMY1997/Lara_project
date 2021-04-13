@@ -35,11 +35,9 @@ class CardController extends Controller
         $card-> age= $request->age;
         $card-> reason_see= $request->reason_see;
         $card-> assign = $request->assign;
-        //$card->fill($request->validate());
-        //$card-> user_id= $request->user()->id;
         $card->save();
 
-        return redirect()->back()->withSuccess('Пациент успешно добавлен');
+        return redirect('home')->withSuccess('Пациент успешно добавлен');
     }
 
 

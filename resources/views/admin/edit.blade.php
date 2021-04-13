@@ -4,6 +4,10 @@
 
 @section('content')
 <section class="content">
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        <h4><i class="icon fa fa-check"></i>{{ session('message') }}</h4>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <h1>{{$title}} {{$user->name}} </h1>

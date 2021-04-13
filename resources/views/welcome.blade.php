@@ -33,10 +33,10 @@
                             @auth
                                 <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                             @else
-                                <a href="{{ route('login') }}" class="button primary">Log in</a>
+                                <a href="{{ route('login') }}" class="btn btn-outline-info">Log in</a>
         
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="button primary">Register</a>
+                                    <a href="{{ route('register') }}" class="btn btn-outline-info">Register</a>
                                 @endif
                             @endauth
                         </div>
@@ -44,8 +44,6 @@
             </nav>
         </header>
         </div>
-
-
         <section id="banner">
             <div class="inner">
                 <header>
@@ -54,91 +52,13 @@
                 <p>Это сайт <strong>My Vet</strong>, для
                 <br />
                 учета пациентов
-                <footer>
-                    <ul class="buttons stacked">
-                        <li><a href="#main" class="button fit scrolly">РАССКАЗАТЬ БОЛЬШЕ</a></li>
-                    </ul>
-                </footer>
             </div>
         </section>
-
-
-        <article id="main">
-            <header class="special container">
-                <span class="icon solid fa-chart-bar"></span>
-                <h2><strong>My Vet</strong></h2>
-                <p>Сайт <strong>My Vet</strong> разработан для комфортного учета ваших пациентов
-                <br />
-                В нем вы сможете записывать своих клиентов, которых вы принимаете.</p>
-                <br />
-            </header>
-            <!-- Two -->
-                <section class="wrapper style1 container special">
-                    <div class="row">
-                        <div class="col-4 col-12-narrower">
-                            <section>
-                                <span class="icon solid featured fa-check"></span>
-                                <header>
-                                    <h3>This is Something</h3>
-                                </header>
-                                <p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-                            </section>
-
-                        </div>
-                        <div class="col-4 col-12-narrower">
-
-                            <section>
-                                <span class="icon solid featured fa-check"></span>
-                                <header>
-                                    <h3>Also Something</h3>
-                                </header>
-                                <p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-                            </section>
-
-                        </div>
-                        <div class="col-4 col-12-narrower">
-
-                            <section>
-                                <span class="icon solid featured fa-check"></span>
-                                <header>
-                                    <h3>Probably Something</h3>
-                                </header>
-                                <p>Sed tristique purus vitae volutpat ultrices. Aliquam eu elit eget arcu commodo suscipit dolor nec nibh. Proin a ullamcorper elit, et sagittis turpis. Integer ut fermentum.</p>
-                            </section>
-
-                        </div>
-                    </div>
-                </section>
-    <!-- CTA -->
-        <section id="cta">
-
-            <header>
-                <h2>Ready to do <strong>something</strong>?</h2>
-                <p>Proin a ullamcorper elit, et sagittis turpis integer ut fermentum.</p>
-            </header>
-            <footer>
-                <ul class="buttons">
-                    <li><a href="#" class="button primary">Take My Money</a></li>
-                    <li><a href="#" class="button">LOL Wut</a></li>
-                </ul>
-            </footer>
-
-        </section>
-<div>
-
-        <footer id="footer">
-            <ul class="icons">
-                 <li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
-                 <li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
-                 <li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
-                 <li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
-                 <li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-             </ul>
-     
-             <ul class="copyright">
-                 <li>copyright by Andrieva</li>
-             </ul>
-         </footer>
+        <footer class="footer">
+            <div>
+                <p>Made by Andreeva @2021</p>
+            </div>
+        </footer>
          <script src="/js/jquery.min.js"></script>
 			<script src="/js/jquery.dropotron.min.js"></script>
 			<script src="/js/jquery.scrolly.min.js"></script>
