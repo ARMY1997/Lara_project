@@ -21,6 +21,7 @@
                                 <legend for="nameField">Имя:</legend>
                                 <input type="text"  value="{{$user->name}}" class="form-control" name="name" id="formGroupExampleInput" placeholder="Имя животного">
                               </div>
+                              
                               <div>
                                 <legend for="nameField">email</legend>
                                 <input  type="text" type="text" value="{{$user->email}}" name="email" class="form-control" id="formGroupExampleInput" placeholder="Возраст">  

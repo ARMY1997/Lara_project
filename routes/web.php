@@ -25,6 +25,6 @@ Route::get('/cards/create', [App\Http\Controllers\CardController::class,'create'
 Route::get('/cards/{id}', [App\Http\Controllers\HomeController::class,'edit'])->name('home.edit');
 Route::post('/card', [App\Http\Controllers\HomeController::class,'store'])->name('home.store');;
 Route::get('/cards/{card}', [App\Http\Controllers\HomeController::class,'show'])->name('home.show');
-Route::get('cards/create', [App\Http\Controllers\HomeController::class,'create'])->name('home.create');
+Route::get('/cards/create', [App\Http\Controllers\HomeController::class,'create'])->name('home.create');
 Route::put('/cards', [App\Http\Controllers\HomeController::class,'update'])->name('home.update');
 Route::delete('cards/{card}', [App\Http\Controllers\HomeController::class,'destroy'])->name('home.destroy');

@@ -85,21 +85,33 @@
                         <form>
                           <div class="card-body">
                             <div class="form-group">
-                              <legend for="nameField">Имя животного:</legend>
+                              <legend for="name">Имя животного:</legend>
                               <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="Имя животного">
+                              @error('name')
+                                  <div class="alert alert-danger">{{$message}}</div>
+                              @enderror
                             </div>
                             <div class="form-group">
-                                <legend for="nameField">Возраст:</legend>
+                                <legend for="age">Возраст:</legend>
                                 <input  type="text" type="text" name="age" class="form-control" id="formGroupExampleInput" placeholder="Возраст">
                             </div>
+                            @error('age')
+                                  <div class="alert alert-danger">{{$message}}</div>
+                              @enderror
                             <div class="form-group">
-                                <legend for="ageRangeField">Причина посещения:</legend>
+                                <legend for="reason_see">Причина посещения:</legend>
                                 <input type="text" type="text" name="reason_see" class="form-control" id="formGroupExampleInput" placeholder="Причина посещения">
-                              </div>
+                            </div>
+                            @error('reason_see')
+                                  <div class="alert alert-danger">{{$message}}</div>
+                              @enderror
                               <div class="form-group">
-                                <legend for="commentField">Назначение:</legend>
+                                <legend for="assign">Назначение:</legend>
                                 <textarea type="text" name="assign" class="form-control" id="formGroupExampleInput" placeholder="Назначение"></textarea>
                               </div>
+                              @error('assign')
+                              <div class="alert alert-danger">{{$message}}</div>
+                          @enderror
                           </div>
                           <div class="card-footer">
                             <button class="btn btn-primary" type="submit">Добавить</button>

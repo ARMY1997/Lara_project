@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cards;
+use App\Http\Requests\Card\StoreRequest;
 use Illuminate\View\View;
 //use App\Models\User;
 
@@ -44,8 +45,9 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        
         $card=new Cards(); 
         $card->name= $request->name;
         $card->age= $request->age;
@@ -87,24 +89,13 @@ class HomeController extends Controller
                 'card' => $card,
                 'title' => 'Редактировать'
             ];
-            $error = [
-                'error' => 'Вам это действие не разрешено'
-            ];
             return view('card.edit', $data);
         }
-        else return redirect('home')->withErrors('message','Вам это действие не разрешено!');
+        else return redirect('home');
     }
      
-    function update(Request $request, Cards $cards)
+    function update(StoreRequest $request, Cards $cards)
     {
-        $request->validate([
-            'name'=>'required',
-            'age'=>'required',
-            'reason_see'=>'required',
-            'assign'=>'required'
-        ]);
-
-
         $update = DB::table('cards')
         ->where('name', $request->input('name'))
         ->update([
